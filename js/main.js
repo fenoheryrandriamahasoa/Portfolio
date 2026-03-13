@@ -1,21 +1,17 @@
-// 
-
 (function($,sr) {
-  // debouncing function from John Hann
-  // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
   var debounce = function (func, threshold, execAsap) {
     var timeout;
     return function debounced () {
       var obj = this, args = arguments;
       function delayed () {
         if (!execAsap)
-                          func.apply(obj, args);
+            func.apply(obj, args);
         timeout = null;
       }
       ;
       if (timeout)
-                    clearTimeout(timeout); else if (execAsap)
-                    func.apply(obj, args);
+        clearTimeout(timeout); else if (execAsap)
+        func.apply(obj, args);
       timeout = setTimeout(delayed, threshold || 100);
     }
     ;
@@ -72,8 +68,6 @@ $(function() {
     bannerText.show();
   }
   centerHomeBannerText();
-
-
 
     jQuery(window).smartresize(function() {
         setHomeBannerHeight();
@@ -155,103 +149,6 @@ $( function() {
   });
 
   
-});
-
-function countUpTo(count,selector,max)
-    {
-      console.log("count--> "+count);
-        var div_by = count,
-            speed = Math.round(count / div_by),
-            $display = selector,
-            run_count = 1,
-            int_speed = 24;
-
-        var int = setInterval(function() {
-            if(run_count < div_by){
-                $display.text(speed * run_count);
-                run_count++;
-            } else if(parseInt($display.text()) < count) {
-                var curr_count = parseInt($display.text()) + 1;
-                var text = "";
-                if(max>99){
-                     if(curr_count<10){
-                        text = text+"00"+curr_count;
-                    }
-                    /*else if(curr_count < 100 && curr_count >9){
-                        text = text+"0"+curr_count;
-                    }*/
-                    else{
-                      text = curr_count;
-                    }
-                }else if(max<100 && max>9){
-                     if(curr_count<10){
-                        text = text+"00"+curr_count;
-                    }
-                   /*else if(curr_count < 100 && curr_count >9){
-                        text = text+"0"+curr_count;
-                    }*/
-                    else{
-                      text = curr_count;
-                    }
-                }else{
-                      if(curr_count<10){
-                        text = text+"00"+curr_count;
-                    }
-                   /*else if(curr_count < 100 && curr_count >9){
-                        text = text+"0"+curr_count;
-                    }*/
-                    else{
-                      text = curr_count;
-                    }
-                }
-               
-                $display.text(text);
-            } else {
-                clearInterval(int);
-            }
-        }, int_speed);
-    }
-
-
-var firstTime = true;
-$(document).scroll(function(event) {
-
-
-
-  var result = $('.count-timer').isOnScreen();
-
-  if(result == true) {
-      console.log("on screen");
-
-      if(firstTime){
-        firstTime = false;
-            
-          var count1 = $('.count1'),
-            count2 = $('.count2'),
-            count3 = $('.count3'),
-            count4 = $('.count4'),
-            count5 = $('.count5'),
-            count6 = $('.count6')
-            count1Num = count1.text(),
-            count2Num = count2.text(),
-            count3Num = count3.text(),
-            count4Num = count4.text(),
-            count5Num = count5.text(),
-            count6Num = count6.text();
-
-            var max = Math.max(parseInt(count1Num),parseInt(count2Num));
-            max = Math.max(max,parseInt(count6Num));
-            console.log(max);
-
-            countUpTo(count1Num,count1,max);
-            countUpTo(count2Num,count2,max);
-            countUpTo(count3Num,count3,max);
-            countUpTo(count4Num,count4,max);
-            countUpTo(count5Num,count5,max);
-            countUpTo(count6Num,count6,max);
-      }
-
-    }
 });
 
 // =====================================================================
@@ -420,31 +317,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // =====================================================================
-// Owl Carousel Initialization
-// =====================================================================
-$(document).ready(function(){
-    $('.owl-carousel').owlCarousel({
-        loop: true,
-        margin: 10,
-        autoplay: true,
-        autoplayTimeout: 3000,
-        autoplayHoverPause: true,
-        responsiveClass: true,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            600: {
-                items: 1,
-            },
-            1000: {
-                items: 1,
-            }
-        }
-    });
-});
-
-// =====================================================================
 // Contact Form Handler
 // =====================================================================
 document.addEventListener('DOMContentLoaded', function() {
@@ -505,3 +377,33 @@ $(window).on('scroll', function() {
         $('#site-header').removeClass('header-scrolled');
     }
 });
+
+// =====================================================================
+// NavBar Menu Behavior
+// =====================================================================
+$(document).ready(function () {
+    const $menu = $('.navbar-collapse');
+    const $toggleBtn = $('.navbar-toggle');
+
+    $('.navbar-nav a').not('#theme-toggle').on('click', function(e) {
+        var target = $(this).attr('href');
+        if (target.startsWith('#')) {
+            e.preventDefault();
+            $('html, body').stop().animate({
+                scrollTop: $(target).offset().top - 64
+            }, 800, function() {
+                $menu.collapse('hide'); 
+            });
+        }
+    });
+
+    $(document).on('click', function (e) {
+        if ($menu.hasClass('in') || $menu.hasClass('show')) {
+            if (!$menu.is(e.target) && $menu.has(e.target).length === 0 && 
+                !$toggleBtn.is(e.target) && $toggleBtn.has(e.target).length === 0) {
+                $menu.collapse('hide');
+            }
+        }
+    });
+});
+

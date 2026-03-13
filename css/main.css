@@ -1528,10 +1528,10 @@ body.theme-dark .contact-item-icon {
 }
 
 .github-icon:hover {
-    background: #24292e;
-    border-color: #24292e;
+    background: #0077b5;
+    border-color: #0077b5;
     color: #fff;
-    box-shadow: 0 6px 20px rgba(36,41,46,0.3);
+    box-shadow: 0 6px 20px rgba(0,119,181,0.3);
 }
 
 .linkedin-icon {
@@ -1851,16 +1851,48 @@ body.theme-dark .modal-badge {
         border: 1px solid var(--border);
         border-radius: var(--radius-md);
         box-shadow: var(--shadow-lg);
+        backdrop-filter: blur(15px); 
+        -webkit-backdrop-filter: blur(15px);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .nav-theme-toggle {
+        border-top: 1px solid var(--border);
+        margin-top: 5px;
+        padding-top: 5px;
     }
     
     .site-nav ul {
-        flex-direction: column;
+        flex-direction: column;;
         gap: 2px;
+        align-items: flex-start; 
+        padding-left: 0;         
+        margin-left: 0;
+    }
+
+    .site-nav ul li {
+        width: 100%;           
+        text-align: left;      
     }
     
     .site-nav ul li a {
+        display: flex !important;      
+        flex-direction: row !important; 
+        align-items: center;            
+        justify-content: flex-start;    
         padding: 10px 16px !important;
-        border-radius: var(--radius-sm);
+        text-align: left !important;
+        gap: 10px;                     
+    }
+
+    .site-nav ul li a i {
+        display: inline-block !important;
+        width: auto !important;
+        margin-right: 0;                
+    }
+
+    .site-nav ul li a span {
+        display: inline-block !important;
     }
 
     .middle {
