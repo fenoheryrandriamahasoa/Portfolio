@@ -170,7 +170,7 @@ body.theme-dark .section-label {
 
 /* HEADER */
 #header {
-    background: url(../img/bg/bg-9.jpg) no-repeat center top fixed;
+    /* background: url(../img/bg/bg-9.jpg) no-repeat center top fixed; */
     background-size: cover;
     padding-top: 44px;
     position: relative;
@@ -180,7 +180,7 @@ body.theme-dark .section-label {
     position: relative;
 }
 
-body:not(.theme-dark) #overlay-1 {
+/* body:not(.theme-dark) #overlay-1 {
     background: linear-gradient(
         180deg,
         rgba(255,255,255,0.35) 0%,
@@ -199,7 +199,7 @@ body.theme-dark #overlay-1 {
         rgba(11, 17, 32, 0.85) 60%,
         rgba(11, 17, 32, 0.95) 100%
     );
-}
+} */
 
 #site-header {
     position: fixed;
@@ -401,6 +401,13 @@ body.theme-dark .status-dot {
     object-fit: cover;
     margin-bottom: 24px;
     transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+    position: relative; 
+    z-index: 1;
+}
+
+.profile-hero:hover {
+    z-index: 100;
+    transform: scale(2.05) translateY(40px) translateX(-50px);  
 }
 
 body:not(.theme-dark) .profile-hero {
@@ -413,9 +420,7 @@ body.theme-dark .profile-hero {
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3), var(--shadow-xl);
 }
 
-.profile-hero:hover {
-    transform: scale(1.05);
-}
+
 
 .profile-name {
     font-size: 46px;
