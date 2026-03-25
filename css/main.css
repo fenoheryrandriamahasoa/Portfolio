@@ -722,6 +722,13 @@ body.theme-dark .scroll-dot {
     cursor: pointer !important;
 }
 
+.project-demo-video {
+  width: 100%;       /* Prend toute la largeur du parent (.modal-content) */
+  height: auto;      /* Garde les proportions d'origine */
+  display: block;    /* Évite les espaces vides sous la vidéo */
+  max-width: 100%;   /* Sécurité pour ne jamais déborder */
+}
+
 /* SKILLS */
 #services {
     background: transparent;

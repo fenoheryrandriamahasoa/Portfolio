@@ -219,6 +219,7 @@
     // =========================================================
     document.addEventListener('DOMContentLoaded', function () {
         const detailButtons = document.querySelectorAll('.project-details');
+        const demoButtons = document.querySelectorAll('.project-demo');
         const modals = document.querySelectorAll('.project-modal');
         const closeButtons = document.querySelectorAll('.close-modal');
         const hireButton = document.querySelector('.btn-hire');
@@ -253,6 +254,15 @@
                 e.preventDefault();
                 const projectId = this.getAttribute('data-project');
                 const modal = document.getElementById('project-modal-' + projectId);
+                openModal(modal);
+            });
+        });
+
+        demoButtons.forEach(function (button) {
+            button.addEventListener('click', function (e) {
+                e.preventDefault();
+                const projectId = this.getAttribute('data-project');
+                const modal = document.getElementById('project-demo-' + projectId);
                 openModal(modal);
             });
         });
