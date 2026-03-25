@@ -407,7 +407,7 @@ body.theme-dark .status-dot {
 
 .profile-hero:hover {
     z-index: 100;
-    transform: scale(2.05) translateY(40px) translateX(-50px);  
+    transform: scale(2.05) translateY(40px);  
 }
 
 body:not(.theme-dark) .profile-hero {
@@ -419,8 +419,6 @@ body.theme-dark .profile-hero {
     border: 4px solid rgba(255, 255, 255, 0.16);
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3), var(--shadow-xl);
 }
-
-
 
 .profile-name {
     font-size: 46px;
